@@ -13,6 +13,9 @@ dist/
 build/
 .cache/
 
+# Interní (nepatří do veřejného repa)
+FOTKY.md
+
 # Systémové / editor
 .DS_Store
 Thumbs.db
