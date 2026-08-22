@@ -1,28 +1,376 @@
 <!DOCTYPE html>
 <html lang="cs">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Výkopové práce Sázava | Minibagr s obsluhou</title>
-  <meta name="description" content="Výkopové práce minibagrem na Sázavsku a v okolí do 40 km. Projedu brankou tam, kde velký bagr neprojede. Přípojky, jímky, bazény, drenáže. Nezávazný odhad zdarma." />
-  <meta name="robots" content="index, follow" />
-  <meta property="og:title" content="Výkopové práce Sázava | Minibagr s obsluhou" />
-  <meta property="og:description" content="Malý bagr, velký dosah. Projedu brankou tam, kde velký bagr nemá šanci." />
-  <meta property="og:locale" content="cs_CZ" />
-  <meta property="og:type" content="website" />
-  <link rel="stylesheet" href="style.css" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Výkopové práce minibagrem — Sázava a okolí | Ionut Gabor</title>
+<meta name="description" content="Výkopové práce minibagrem na Sázavsku a do 40 km od Sázavy. Projedu brankou tam, kde velký bagr nemá šanci. Přípojky, jímky, bazény, drenáže, základy. Nezávazný odhad zdarma." />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://vykopy-sazava.cz/" />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="cs_CZ" />
+<meta property="og:title" content="Výkopové práce minibagrem — Sázava a okolí | Ionut Gabor" />
+<meta property="og:description" content="Malý bagr, velký dosah. Projedu brankou tam, kde velký bagr nemá šanci." />
+<meta property="og:url" content="https://vykopy-sazava.cz/" />
+<link rel="stylesheet" href="assets/ds.css" />
+<style>
+  body { margin: 0; text-wrap: pretty; background: var(--color-bg); }
+  a { color: var(--color-accent-700); text-decoration: none; }
+  a:hover { color: var(--color-accent-900); }
+
+  /* Placeholdery na fotky — nahraď <img>, až budou reálné snímky (viz FOTKY.md). */
+  .img-slot {
+    display: flex; align-items: center; justify-content: center; text-align: center;
+    width: 100%; height: 100%;
+    background: var(--color-accent-100);
+    border: 1px dashed var(--color-accent-500);
+    color: var(--color-accent-700);
+    font-family: var(--font-body); font-size: 12px; line-height: 1.4;
+    letter-spacing: 0.06em; text-transform: uppercase; padding: 14px;
+  }
+
+  /* Plovoucí tlačítko „Zavolat" jen na úzkých displejích (mobil). */
+  .sticky-call { display: none; }
+  @media (max-width: 820px) { .sticky-call { display: flex; } }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Výkopy Sázava — Ionut Gabor",
+  "description": "Výkopové a zemní práce minibagrem na Sázavsku a v okolí do 40 km.",
+  "telephone": "+420705601985",
+  "email": "info@vykopy-sazava.cz",
+  "url": "https://vykopy-sazava.cz/",
+  "areaServed": ["Sázava", "Kácov", "Český Šternberk", "Divišov", "Čerčany", "Chocerady", "Benešov", "Vlašim", "Uhlířské Janovice", "Zruč nad Sázavou", "Kutná Hora", "Kolín", "Týnec nad Sázavou", "Bystřice"],
+  "address": { "@type": "PostalAddress", "addressLocality": "Sázava", "addressRegion": "Středočeský kraj", "addressCountry": "CZ" }
+}
+</script>
 </head>
 <body>
-  <!-- PLACEHOLDER: obsah bude nahrazen finálním webem z Claude Design -->
-  <main class="wrap">
-    <span class="badge">Připravujeme web</span>
-    <h1>Výkopové práce <span class="hl">Sázava</span></h1>
-    <p class="lead">Malý bagr, velký dosah. Projedu brankou tam, kde velký bagr nemá šanci.</p>
-    <p class="sub">Výkopy minibagrem na Sázavsku a v okolí do 40&nbsp;km — přípojky, jímky, bazény, drenáže, základy.</p>
 
-    <a class="cta" href="tel:+420705601985">📞 Zavolat: +420 705 601 985</a>
+<div style="font-family: var(--font-body); color: var(--color-text); background: var(--color-bg); overflow-x: hidden">
 
-    <p class="foot">Ionut Gabor · Sázava a okolí</p>
-  </main>
+  <nav class="nav" style="position: sticky; top: 0; z-index: 40; background: var(--color-bg); border-bottom: 1px solid var(--color-divider); display: flex; align-items: center; gap: 12px; padding: 10px clamp(16px, 4vw, 48px)">
+    <span class="nav-brand" style="font-family: var(--font-heading); font-size: 20px; letter-spacing: 0.04em; text-transform: uppercase; flex: 1; line-height: 1.1">Výkopy Sázava<span style="display: block; font-family: var(--font-body); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-neutral-600)">Ionut Gabor · minibagr</span></span>
+    <a class="btn btn-primary" href="tel:+420705601985" style="min-height: 44px; display: inline-flex; align-items: center; gap: 8px; font-size: 15px; white-space: nowrap; text-decoration: none">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+      705 601 985
+    </a>
+  </nav>
+
+  <header style="background: var(--color-accent-900); color: var(--color-neutral-100); position: relative">
+    <div style="max-width: 1160px; margin: 0 auto; padding: clamp(28px, 6vw, 72px) clamp(16px, 4vw, 48px) clamp(32px, 6vw, 80px); display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: clamp(24px, 4vw, 56px); align-items: center">
+      <div>
+        <span style="display: block; font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--color-accent-300); margin-bottom: 14px">Výkopové a zemní práce · Sázavsko</span>
+        <h1 style="font-family: var(--font-heading); font-weight: 600; font-size: clamp(42px, 9vw, 82px); line-height: 0.98; letter-spacing: 0.01em; text-transform: uppercase; margin: 0">Malý bagr,<br />velký dosah</h1>
+        <p style="font-size: clamp(17px, 2.2vw, 20px); line-height: 1.5; margin: 20px 0 0; max-width: 46ch; color: var(--color-accent-200)">Výkopy minibagrem na Sázavsku a do 40 km od Sázavy. <strong style="color: #fff; font-weight: 600">Projedu brankou tam, kde velký bagr nemá šanci</strong> — a zahradu ani dlažbu vám nezničím.</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px">
+          <a class="btn btn-primary" href="tel:+420705601985" style="min-height: 56px; font-size: 18px; padding-inline: 24px; display: inline-flex; align-items: center; gap: 10px; text-decoration: none">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+            Zavolat +420 705 601 985
+          </a>
+          <a class="btn" href="#poptavka" style="min-height: 56px; font-size: 18px; padding-inline: 24px; display: inline-flex; align-items: center; border: 1px solid var(--color-accent-400); color: #fff; background: transparent; text-decoration: none">Nezávazně poptat</a>
+        </div>
+        <ul style="list-style: none; display: flex; flex-wrap: wrap; gap: 10px 22px; margin: 28px 0 0; padding: 0; font-size: 14px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--color-accent-200)">
+          <li style="display: flex; align-items: center; gap: 8px"><span style="color: var(--color-accent-300)">✓</span>Odhad zdarma</li>
+          <li style="display: flex; align-items: center; gap: 8px"><span style="color: var(--color-accent-300)">✓</span>Ozvu se do 24 h</li>
+          <li style="display: flex; align-items: center; gap: 8px"><span style="color: var(--color-accent-300)">✓</span>Vlastní doprava stroje</li>
+        </ul>
+      </div>
+      <figure class="blueprint" style="margin: 0; position: relative; min-height: 260px">
+        <div class="img-slot" style="aspect-ratio: 4 / 3">Fotka minibagru v akci (na šířku)</div>
+        <i class="corner tl" style="color: rgba(255,255,255,.6)"></i><i class="corner tr" style="color: rgba(255,255,255,.6)"></i><i class="corner bl" style="color: rgba(255,255,255,.6)"></i><i class="corner br" style="color: rgba(255,255,255,.6)"></i>
+      </figure>
+    </div>
+  </header>
+
+  <section id="sluzby" style="max-width: 1160px; margin: 0 auto; padding: clamp(40px, 7vw, 88px) clamp(16px, 4vw, 48px) 0">
+    <span style="display: block; font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent-700); margin-bottom: 12px">01 · Co pro vás vykopu</span>
+    <hr style="height: 1px; border: 0; background: var(--color-divider); margin: 0 0 24px" />
+    <h2 style="font-family: var(--font-heading); font-weight: 600; font-size: clamp(30px, 5vw, 46px); line-height: 1.05; text-transform: uppercase; margin: 0 0 32px; letter-spacing: 0.01em">Služby</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: clamp(16px, 2.5vw, 32px)">
+      <div class="card blueprint" style="padding: 20px">
+        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent-700)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3s6 6.4 6 9.9a6 6 0 0 1-12 0C6 9.4 12 3 12 3z"/></svg>
+        <h3 style="font-family: var(--font-heading); font-size: 21px; text-transform: uppercase; margin: 12px 0 6px; letter-spacing: 0.02em">Přípojky</h3>
+        <p style="font-size: 15px; line-height: 1.5; margin: 0; color: var(--color-neutral-700)">Voda, kanalizace, plyn i elektro — od hranice pozemku až k domu.</p>
+      </div>
+      <div class="card blueprint" style="padding: 20px">
+        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent-700)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="6" rx="7.5" ry="3"/><path d="M4.5 6v12c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3V6"/><path d="M4.5 12c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3"/></svg>
+        <h3 style="font-family: var(--font-heading); font-size: 21px; text-transform: uppercase; margin: 12px 0 6px; letter-spacing: 0.02em">Jímky a ČOV</h3>
+        <p style="font-size: 15px; line-height: 1.5; margin: 0; color: var(--color-neutral-700)">Výkop jámy na míru nádrže, obsyp i zásyp po usazení.</p>
+      </div>
+      <div class="card blueprint" style="padding: 20px">
+        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent-700)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 8c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/><path d="M2 14c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/><path d="M2 20c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/></svg>
+        <h3 style="font-family: var(--font-heading); font-size: 21px; text-transform: uppercase; margin: 12px 0 6px; letter-spacing: 0.02em">Drenáže kolem domu</h3>
+        <p style="font-size: 15px; line-height: 1.5; margin: 0; color: var(--color-neutral-700)">Odvedení vody od základů, aby vám nevlhly zdi ani sklep.</p>
+      </div>
+      <div class="card blueprint" style="padding: 20px">
+        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent-700)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7.5h18v9H3z"/><path d="M3 12c1.5-1.5 3-1.5 4.5 0s3 1.5 4.5 0 3-1.5 4.5 0 3 1.5 4.5 0"/></svg>
+        <h3 style="font-family: var(--font-heading); font-size: 21px; text-transform: uppercase; margin: 12px 0 6px; letter-spacing: 0.02em">Bazény a jezírka</h3>
+        <p style="font-size: 15px; line-height: 1.5; margin: 0; color: var(--color-neutral-700)">Jáma pro bazén nebo jezírko přesně podle rozměrů a hloubky.</p>
+      </div>
+      <div class="card blueprint" style="padding: 20px">
+        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent-700)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20.5h18"/><path d="M6 20.5V10l6-4 6 4v10.5"/><path d="M6 14h12"/></svg>
+        <h3 style="font-family: var(--font-heading); font-size: 21px; text-transform: uppercase; margin: 12px 0 6px; letter-spacing: 0.02em">Základy staveb a plotů</h3>
+        <p style="font-size: 15px; line-height: 1.5; margin: 0; color: var(--color-neutral-700)">Pásy pod garáž, pergolu, kůlnu i patky pod plotové sloupky.</p>
+      </div>
+      <div class="card blueprint" style="padding: 20px">
+        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent-700)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 19l6.5-9.5 4 5 3.5-4.5L22 19z"/></svg>
+        <h3 style="font-family: var(--font-heading); font-size: 21px; text-transform: uppercase; margin: 12px 0 6px; letter-spacing: 0.02em">Terénní úpravy</h3>
+        <p style="font-size: 15px; line-height: 1.5; margin: 0; color: var(--color-neutral-700)">Srovnání pozemku, svahování, rozhrnutí zeminy po stavbě.</p>
+      </div>
+      <div class="card blueprint" style="padding: 20px">
+        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent-700)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3.5h18v17H3z"/><path d="M3 9.2h18M3 14.8h18M9 3.5v17M15 3.5v17"/></svg>
+        <h3 style="font-family: var(--font-heading); font-size: 21px; text-transform: uppercase; margin: 12px 0 6px; letter-spacing: 0.02em">Podklady pod dlažbu</h3>
+        <p style="font-size: 15px; line-height: 1.5; margin: 0; color: var(--color-neutral-700)">Sejmutí drnu, výkop a srovnání pláně pod chodník či příjezd.</p>
+      </div>
+      <div class="card blueprint" style="padding: 20px">
+        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent-700)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1.5 6h12v10h-12z"/><path d="M13.5 9.5h3.6l2.9 3v3.5h-6.5z"/><circle cx="5.5" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg>
+        <h3 style="font-family: var(--font-heading); font-size: 21px; text-transform: uppercase; margin: 12px 0 6px; letter-spacing: 0.02em">Odvoz a dovoz materiálu</h3>
+        <p style="font-size: 15px; line-height: 1.5; margin: 0; color: var(--color-neutral-700)">Odvezu přebytečnou zeminu, přivezu štěrk, písek nebo ornici.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="proc" style="max-width: 1160px; margin: 0 auto; padding: clamp(40px, 7vw, 88px) clamp(16px, 4vw, 48px) 0">
+    <span style="display: block; font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent-700); margin-bottom: 12px">02 · Proč malý bagr</span>
+    <hr style="height: 1px; border: 0; background: var(--color-divider); margin: 0 0 24px" />
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: clamp(24px, 4vw, 56px); align-items: start">
+      <div>
+        <h2 style="font-family: var(--font-heading); font-weight: 600; font-size: clamp(30px, 5vw, 46px); line-height: 1.05; text-transform: uppercase; margin: 0 0 24px; letter-spacing: 0.01em">Tam, kam se velký stroj nedostane</h2>
+        <ul style="list-style: none; margin: 0; padding: 0; display: grid; gap: 20px">
+          <li style="display: grid; grid-template-columns: 32px 1fr; gap: 14px; align-items: start">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent-700)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V4.5h18V21"/><path d="M12 4.5V21"/><path d="M3 21h18"/></svg>
+            <div><strong style="display: block; font-family: var(--font-heading); font-size: 20px; text-transform: uppercase; letter-spacing: 0.02em">Projedu brankou (~1 m)</strong><span style="font-size: 15px; line-height: 1.5; color: var(--color-neutral-700)">Stroj má 1,5 tuny a úzký podvozek. Hotová zahrada, úzký průjezd, dvorek u domu — projedu.</span></div>
+          </li>
+          <li style="display: grid; grid-template-columns: 32px 1fr; gap: 14px; align-items: start">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent-700)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5l8 3v6c0 5-3.4 8.9-8 10-4.6-1.1-8-5-8-10v-6z"/><path d="M9 12l2 2 4-4"/></svg>
+            <div><strong style="display: block; font-family: var(--font-heading); font-size: 20px; text-transform: uppercase; letter-spacing: 0.02em">Nezničím hotové</strong><span style="font-size: 15px; line-height: 1.5; color: var(--color-neutral-700)">Dlažba, trávník, obrubníky. Lehký stroj netlačí do terénu tak jako pásák o osmi tunách.</span></div>
+          </li>
+          <li style="display: grid; grid-template-columns: 32px 1fr; gap: 14px; align-items: start">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent-700)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1.5 6h12v10h-12z"/><path d="M13.5 9.5h3.6l2.9 3v3.5h-6.5z"/><circle cx="5.5" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg>
+            <div><strong style="display: block; font-family: var(--font-heading); font-size: 20px; text-transform: uppercase; letter-spacing: 0.02em">Přivezu si stroj sám</strong><span style="font-size: 15px; line-height: 1.5; color: var(--color-neutral-700)">Nemusíte nic řešit ani shánět dopravu. Přijedu, vyložím, odpracuji a odvezu.</span></div>
+          </li>
+          <li style="display: grid; grid-template-columns: 32px 1fr; gap: 14px; align-items: start">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent-700)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7.5h18v12H3z"/><path d="M3 11.5h18"/><path d="M8 4v3.5M16 4v3.5"/></svg>
+            <div><strong style="display: block; font-family: var(--font-heading); font-size: 20px; text-transform: uppercase; letter-spacing: 0.02em">Jednám férově</strong><span style="font-size: 15px; line-height: 1.5; color: var(--color-neutral-700)">Cenu řeknu předem, po práci uklidím. Když práce nedává smysl, řeknu vám to rovnou.</span></div>
+          </li>
+        </ul>
+      </div>
+      <figure class="blueprint" style="margin: 0; position: relative">
+        <div class="img-slot" style="aspect-ratio: 4 / 3">Fotka stroje u branky / na úzkém dvorku</div>
+        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      </figure>
+    </div>
+  </section>
+
+  <section id="realizace" style="max-width: 1160px; margin: 0 auto; padding: clamp(40px, 7vw, 88px) clamp(16px, 4vw, 48px) 0">
+    <span style="display: block; font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent-700); margin-bottom: 12px">03 · Realizace</span>
+    <hr style="height: 1px; border: 0; background: var(--color-divider); margin: 0 0 24px" />
+    <h2 style="font-family: var(--font-heading); font-weight: 600; font-size: clamp(30px, 5vw, 46px); line-height: 1.05; text-transform: uppercase; margin: 0 0 10px; letter-spacing: 0.01em">Před a po</h2>
+    <p style="font-size: 16px; line-height: 1.5; margin: 0 0 32px; max-width: 56ch; color: var(--color-neutral-700)">Každou zakázku fotím před začátkem a po dokončení — ať vidíte, v jakém stavu pozemek předávám zpátky.</p>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: clamp(20px, 3vw, 40px)">
+      <figure style="margin: 0">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px">
+          <div class="blueprint" style="position: relative"><div class="img-slot" style="aspect-ratio: 1 / 1">PŘED</div><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i></div>
+          <div class="blueprint" style="position: relative"><div class="img-slot" style="aspect-ratio: 1 / 1">PO</div><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i></div>
+        </div>
+        <figcaption style="display: flex; justify-content: space-between; gap: 12px; margin-top: 12px; font-size: 14px"><span style="font-family: var(--font-heading); font-size: 19px; text-transform: uppercase; letter-spacing: 0.02em">Přípojka vody</span><span style="color: var(--color-neutral-600); letter-spacing: 0.06em; text-transform: uppercase">Kácov</span></figcaption>
+      </figure>
+      <figure style="margin: 0">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px">
+          <div class="blueprint" style="position: relative"><div class="img-slot" style="aspect-ratio: 1 / 1">PŘED</div><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i></div>
+          <div class="blueprint" style="position: relative"><div class="img-slot" style="aspect-ratio: 1 / 1">PO</div><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i></div>
+        </div>
+        <figcaption style="display: flex; justify-content: space-between; gap: 12px; margin-top: 12px; font-size: 14px"><span style="font-family: var(--font-heading); font-size: 19px; text-transform: uppercase; letter-spacing: 0.02em">Jáma pro jímku</span><span style="color: var(--color-neutral-600); letter-spacing: 0.06em; text-transform: uppercase">Čerčany</span></figcaption>
+      </figure>
+      <figure style="margin: 0">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px">
+          <div class="blueprint" style="position: relative"><div class="img-slot" style="aspect-ratio: 1 / 1">PŘED</div><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i></div>
+          <div class="blueprint" style="position: relative"><div class="img-slot" style="aspect-ratio: 1 / 1">PO</div><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i></div>
+        </div>
+        <figcaption style="display: flex; justify-content: space-between; gap: 12px; margin-top: 12px; font-size: 14px"><span style="font-family: var(--font-heading); font-size: 19px; text-transform: uppercase; letter-spacing: 0.02em">Drenáž kolem domu</span><span style="color: var(--color-neutral-600); letter-spacing: 0.06em; text-transform: uppercase">Chocerady</span></figcaption>
+      </figure>
+      <figure style="margin: 0">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px">
+          <div class="blueprint" style="position: relative"><div class="img-slot" style="aspect-ratio: 1 / 1">PŘED</div><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i></div>
+          <div class="blueprint" style="position: relative"><div class="img-slot" style="aspect-ratio: 1 / 1">PO</div><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i></div>
+        </div>
+        <figcaption style="display: flex; justify-content: space-between; gap: 12px; margin-top: 12px; font-size: 14px"><span style="font-family: var(--font-heading); font-size: 19px; text-transform: uppercase; letter-spacing: 0.02em">Jáma pro bazén</span><span style="color: var(--color-neutral-600); letter-spacing: 0.06em; text-transform: uppercase">Divišov</span></figcaption>
+      </figure>
+      <figure style="margin: 0">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px">
+          <div class="blueprint" style="position: relative"><div class="img-slot" style="aspect-ratio: 1 / 1">PŘED</div><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i></div>
+          <div class="blueprint" style="position: relative"><div class="img-slot" style="aspect-ratio: 1 / 1">PO</div><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i></div>
+        </div>
+        <figcaption style="display: flex; justify-content: space-between; gap: 12px; margin-top: 12px; font-size: 14px"><span style="font-family: var(--font-heading); font-size: 19px; text-transform: uppercase; letter-spacing: 0.02em">Patky pod plot</span><span style="color: var(--color-neutral-600); letter-spacing: 0.06em; text-transform: uppercase">Sázava</span></figcaption>
+      </figure>
+      <figure style="margin: 0">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px">
+          <div class="blueprint" style="position: relative"><div class="img-slot" style="aspect-ratio: 1 / 1">PŘED</div><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i></div>
+          <div class="blueprint" style="position: relative"><div class="img-slot" style="aspect-ratio: 1 / 1">PO</div><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i></div>
+        </div>
+        <figcaption style="display: flex; justify-content: space-between; gap: 12px; margin-top: 12px; font-size: 14px"><span style="font-family: var(--font-heading); font-size: 19px; text-transform: uppercase; letter-spacing: 0.02em">Podklad pod dlažbu</span><span style="color: var(--color-neutral-600); letter-spacing: 0.06em; text-transform: uppercase">Týnec nad Sázavou</span></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section id="cenik" style="max-width: 1160px; margin: 0 auto; padding: clamp(40px, 7vw, 88px) clamp(16px, 4vw, 48px) 0">
+    <span style="display: block; font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent-700); margin-bottom: 12px">04 · Ceník</span>
+    <hr style="height: 1px; border: 0; background: var(--color-divider); margin: 0 0 24px" />
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: clamp(24px, 4vw, 48px); align-items: start">
+      <div>
+        <h2 style="font-family: var(--font-heading); font-weight: 600; font-size: clamp(30px, 5vw, 46px); line-height: 1.05; text-transform: uppercase; margin: 0 0 16px; letter-spacing: 0.01em">Cenu znáte předem</h2>
+        <p style="font-size: 16px; line-height: 1.55; margin: 0 0 20px; color: var(--color-neutral-700)">Orientační ceny jsou tady schválně — ať nemusíte volat kvůli tomu, abyste zjistili, jestli si to vůbec můžete dovolit. Přesnou částku dohodneme podle terénu a rozsahu.</p>
+        <div class="blueprint" style="position: relative; padding: 18px 20px; background: var(--color-accent-100)">
+          <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+          <strong style="display: block; font-family: var(--font-heading); font-size: 24px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--color-accent-900)">Nezávazný odhad zdarma</strong>
+          <span style="font-size: 15px; line-height: 1.5; color: var(--color-accent-800)">Zavolejte, popište práci — cenu vám řeknu po telefonu, nebo se přijedu podívat. Bez poplatku a bez závazku.</span>
+        </div>
+      </div>
+      <table class="table">
+        <tbody>
+          <tr><td style="padding: 14px 8px 14px 0"><span style="display: block; font-family: var(--font-heading); font-size: 20px; text-transform: uppercase; letter-spacing: 0.02em">Minibagr s obsluhou</span><span style="font-size: 14px; color: var(--color-neutral-600)">1,5 t, včetně nafty</span></td><td style="padding: 14px 0; text-align: right; white-space: nowrap; font-family: var(--font-heading); font-size: 22px">od [CENA] Kč/hod</td></tr>
+          <tr><td style="padding: 14px 8px 14px 0"><span style="display: block; font-family: var(--font-heading); font-size: 20px; text-transform: uppercase; letter-spacing: 0.02em">Doprava stroje</span><span style="font-size: 14px; color: var(--color-neutral-600)">Dle vzdálenosti od Sázavy</span></td><td style="padding: 14px 0; text-align: right; white-space: nowrap; font-family: var(--font-heading); font-size: 22px">od [CENA] Kč</td></tr>
+          <tr><td style="padding: 14px 8px 14px 0"><span style="display: block; font-family: var(--font-heading); font-size: 20px; text-transform: uppercase; letter-spacing: 0.02em">Přípojky, jímky, bazény</span><span style="font-size: 14px; color: var(--color-neutral-600)">Podle rozsahu a terénu</span></td><td style="padding: 14px 0; text-align: right; white-space: nowrap; font-family: var(--font-heading); font-size: 22px">cena dohodou</td></tr>
+          <tr><td style="padding: 14px 8px 14px 0"><span style="display: block; font-family: var(--font-heading); font-size: 20px; text-transform: uppercase; letter-spacing: 0.02em">Minimální zakázka</span><span style="font-size: 14px; color: var(--color-neutral-600)">Kvůli dopravě stroje</span></td><td style="padding: 14px 0; text-align: right; white-space: nowrap; font-family: var(--font-heading); font-size: 22px">půl dne</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="o-mne" style="max-width: 1160px; margin: 0 auto; padding: clamp(40px, 7vw, 88px) clamp(16px, 4vw, 48px) 0">
+    <span style="display: block; font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent-700); margin-bottom: 12px">05 · Kdo pro vás kope</span>
+    <hr style="height: 1px; border: 0; background: var(--color-divider); margin: 0 0 24px" />
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: clamp(24px, 4vw, 56px); align-items: center">
+      <figure class="blueprint" style="margin: 0; position: relative; max-width: 420px">
+        <div class="img-slot" style="aspect-ratio: 3 / 4">Fotka Ionuta u stroje</div>
+        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      </figure>
+      <div>
+        <h2 style="font-family: var(--font-heading); font-weight: 600; font-size: clamp(30px, 5vw, 46px); line-height: 1.05; text-transform: uppercase; margin: 0 0 18px; letter-spacing: 0.01em">Ionut Gabor</h2>
+        <p style="font-size: 17px; line-height: 1.6; margin: 0 0 16px; max-width: 52ch">Bydlím na Sázavsku a kopu tady sám na sebe. Žádná firma s dispečinkem — telefon zvedám já a k vám přijedu taky já.</p>
+        <p style="font-size: 17px; line-height: 1.6; margin: 0 0 16px; max-width: 52ch; color: var(--color-neutral-700)">Začínám, takže si každou zakázku hlídám dvakrát: přijedu, na kdy se domluvíme, cenu neměním v půlce práce a po sobě uklidím. Když něco nejde nebo se to nevyplatí, řeknu to na rovinu.</p>
+        <p style="font-size: 17px; line-height: 1.6; margin: 0; max-width: 52ch; color: var(--color-neutral-700)">Stroj mám vlastní, dopravu taky. Vy se staráte jen o to, kde má být díra.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="oblast" style="max-width: 1160px; margin: 0 auto; padding: clamp(40px, 7vw, 88px) clamp(16px, 4vw, 48px) 0">
+    <span style="display: block; font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent-700); margin-bottom: 12px">06 · Oblast působení</span>
+    <hr style="height: 1px; border: 0; background: var(--color-divider); margin: 0 0 24px" />
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: clamp(24px, 4vw, 56px); align-items: center">
+      <div>
+        <h2 style="font-family: var(--font-heading); font-weight: 600; font-size: clamp(30px, 5vw, 46px); line-height: 1.05; text-transform: uppercase; margin: 0 0 16px; letter-spacing: 0.01em">Do 40 km od Sázavy</h2>
+        <p style="font-size: 16px; line-height: 1.55; margin: 0 0 20px; color: var(--color-neutral-700)">Nejste na seznamu? Zavolejte stejně — pokud to jde ujet, domluvíme se.</p>
+        <ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px">
+          <li class="tag tag-outline">Sázava</li><li class="tag tag-outline">Kácov</li><li class="tag tag-outline">Český Šternberk</li><li class="tag tag-outline">Divišov</li><li class="tag tag-outline">Čerčany</li><li class="tag tag-outline">Chocerady</li><li class="tag tag-outline">Ostředek</li><li class="tag tag-outline">Benešov</li><li class="tag tag-outline">Vlašim</li><li class="tag tag-outline">Uhlířské Janovice</li><li class="tag tag-outline">Zruč nad Sázavou</li><li class="tag tag-outline">Trhový Štěpánov</li><li class="tag tag-outline">Kutná Hora</li><li class="tag tag-outline">Kolín</li><li class="tag tag-outline">Zásmuky</li><li class="tag tag-outline">Kostelec nad Černými lesy</li><li class="tag tag-outline">Týnec nad Sázavou</li><li class="tag tag-outline">Bystřice</li>
+        </ul>
+      </div>
+      <div style="position: relative; width: 100%; max-width: 380px; aspect-ratio: 1 / 1; justify-self: center">
+        <div style="position: absolute; inset: 0; border: 1px dashed var(--color-accent-500); border-radius: 50%"></div>
+        <div style="position: absolute; inset: 22%; border: 1px dashed var(--color-accent-400); border-radius: 50%"></div>
+        <div style="position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; background: var(--color-divider)"></div>
+        <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: var(--color-divider)"></div>
+        <div style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); text-align: center">
+          <span style="display: block; width: 12px; height: 12px; background: var(--color-accent); margin: 0 auto 8px"></span>
+          <strong style="font-family: var(--font-heading); font-size: 24px; text-transform: uppercase; letter-spacing: 0.04em">Sázava</strong>
+        </div>
+        <span style="position: absolute; left: 50%; bottom: 6px; transform: translateX(-50%); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-accent-700); background: var(--color-bg); padding: 0 8px">Dojezd 40 km</span>
+        <span style="position: absolute; left: 50%; top: 22%; transform: translate(-50%, -50%); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-accent-700); background: var(--color-bg); padding: 0 6px">15 km</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="reference" style="max-width: 1160px; margin: 0 auto; padding: clamp(40px, 7vw, 88px) clamp(16px, 4vw, 48px) 0">
+    <span style="display: block; font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent-700); margin-bottom: 12px">07 · Reference</span>
+    <hr style="height: 1px; border: 0; background: var(--color-divider); margin: 0 0 24px" />
+    <h2 style="font-family: var(--font-heading); font-weight: 600; font-size: clamp(30px, 5vw, 46px); line-height: 1.05; text-transform: uppercase; margin: 0 0 32px; letter-spacing: 0.01em">Co říkají zákazníci</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: clamp(16px, 2.5vw, 32px)">
+      <figure class="card blueprint" style="margin: 0; padding: 24px">
+        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+        <blockquote style="font-family: var(--font-heading); font-size: 22px; line-height: 1.3; margin: 0">„Sem doplníme recenzi od prvního zákazníka — přesně tak, jak ji napsal.“</blockquote>
+        <figcaption style="margin-top: 16px; font-size: 14px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-neutral-600)">Jméno · Obec</figcaption>
+      </figure>
+      <figure class="card blueprint" style="margin: 0; padding: 24px">
+        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+        <blockquote style="font-family: var(--font-heading); font-size: 22px; line-height: 1.3; margin: 0">„Místo pro druhou recenzi. Ideálně o tom, jak se stroj dostal tam, kam nikdo nevěřil.“</blockquote>
+        <figcaption style="margin-top: 16px; font-size: 14px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-neutral-600)">Jméno · Obec</figcaption>
+      </figure>
+      <figure class="card blueprint" style="margin: 0; padding: 24px">
+        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+        <blockquote style="font-family: var(--font-heading); font-size: 22px; line-height: 1.3; margin: 0">„Třetí místo — třeba o dodržené ceně a termínu.“</blockquote>
+        <figcaption style="margin-top: 16px; font-size: 14px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-neutral-600)">Jméno · Obec</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section id="poptavka" style="background: var(--color-accent-900); color: var(--color-neutral-100); margin-top: clamp(40px, 7vw, 88px)">
+    <div style="max-width: 1160px; margin: 0 auto; padding: clamp(36px, 6vw, 80px) clamp(16px, 4vw, 48px); display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: clamp(28px, 4vw, 64px)">
+      <div>
+        <span style="display: block; font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent-300); margin-bottom: 12px">08 · Kontakt</span>
+        <h2 style="font-family: var(--font-heading); font-weight: 600; font-size: clamp(30px, 5vw, 48px); line-height: 1.05; text-transform: uppercase; margin: 0 0 20px; letter-spacing: 0.01em">Zavolejte, domluvíme se</h2>
+        <a href="tel:+420705601985" style="display: block; font-family: var(--font-heading); font-size: clamp(34px, 6.5vw, 56px); line-height: 1.05; letter-spacing: 0.01em; color: #fff; text-decoration: none; margin-bottom: 8px">+420 705 601 985</a>
+        <a href="mailto:info@vykopy-sazava.cz" style="font-size: 18px; color: var(--color-accent-200)">info@vykopy-sazava.cz</a>
+        <p style="font-size: 15px; line-height: 1.6; margin: 20px 0 0; max-width: 40ch; color: var(--color-accent-200)">Volejte klidně po sedmé ráno i večer. Když jsem ve výkopu a nezvednu, ozvu se hned, jak vylezu — nejpozději do 24 hodin.</p>
+      </div>
+      <form id="poptavka-form" style="display: grid; gap: 14px; align-content: start">
+        <div class="field"><label for="f-jmeno" style="color: var(--color-accent-200)">Jméno</label><input class="input" id="f-jmeno" name="jmeno" type="text" placeholder="Jan Novák" style="min-height: 48px; font-size: 16px" /></div>
+        <div class="field"><label for="f-tel" style="color: var(--color-accent-200)">Telefon</label><input class="input" id="f-tel" name="telefon" type="tel" placeholder="+420 …" style="min-height: 48px; font-size: 16px" /></div>
+        <div class="field"><label for="f-obec" style="color: var(--color-accent-200)">Obec</label><input class="input" id="f-obec" name="obec" type="text" placeholder="Kácov" style="min-height: 48px; font-size: 16px" /></div>
+        <div class="field"><label for="f-co" style="color: var(--color-accent-200)">Co potřebuji</label><textarea class="input" id="f-co" name="popis" rows="4" placeholder="Např. přípojka vody od hranice pozemku k domu, asi 18 m, branka 1,1 m." style="font-size: 16px; resize: vertical"></textarea></div>
+        <button class="btn btn-primary" type="submit" style="min-height: 56px; font-size: 18px">Odeslat poptávku</button>
+        <p id="form-sent" style="margin: 0; font-size: 15px; color: var(--color-accent-200); display: none">Otevřel jsem vám e-mail s vyplněnou poptávkou — stačí ho odeslat. Nebo rovnou zavolejte na 705 601 985.</p>
+      </form>
+    </div>
+  </section>
+
+  <footer style="max-width: 1160px; margin: 0 auto; padding: 32px clamp(16px, 4vw, 48px) 120px; font-size: 14px; line-height: 1.6; color: var(--color-neutral-700)">
+    <div style="display: flex; flex-wrap: wrap; gap: 8px 20px; margin-bottom: 12px">
+      <strong style="font-weight: 600; color: var(--color-text)">Ionut Gabor</strong>
+      <a href="tel:+420705601985">+420 705 601 985</a>
+      <a href="mailto:info@vykopy-sazava.cz">info@vykopy-sazava.cz</a>
+      <span>IČO: [doplnit]</span>
+      <span>vykopy-sazava.cz</span>
+    </div>
+    <p style="margin: 0; max-width: 80ch; color: var(--color-neutral-600)">Výkopové a zemní práce minibagrem: Sázava, Benešov, Kutná Hora, Kolín a okolí — přípojky vody, kanalizace, plynu a elektro, jímky a ČOV, drenáže, základy, terénní úpravy.</p>
+  </footer>
+
+  <a class="btn btn-primary sticky-call" href="tel:+420705601985" style="position: fixed; left: 16px; right: 16px; bottom: 16px; z-index: 60; min-height: 60px; align-items: center; justify-content: center; gap: 10px; font-size: 19px; text-decoration: none; box-shadow: var(--shadow-lg); max-width: 460px; margin: 0 auto">
+    <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+    Zavolat 705 601 985
+  </a>
+</div>
+
+<script>
+  // Poptávkový formulář: sestaví e-mail s vyplněnými údaji a otevře poštovního klienta.
+  // Až bude nasazený backend (Netlify Forms / Formspree), stačí vyměnit tuto obsluhu.
+  (function () {
+    var form = document.getElementById('poptavka-form');
+    if (!form) return;
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var jmeno = form.jmeno.value.trim();
+      var tel = form.telefon.value.trim();
+      var obec = form.obec.value.trim();
+      var popis = form.popis.value.trim();
+      var subject = 'Poptávka výkopových prací' + (obec ? ' — ' + obec : '');
+      var body = 'Jméno: ' + jmeno + '\nTelefon: ' + tel + '\nObec: ' + obec + '\n\nCo potřebuji:\n' + popis;
+      window.location.href = 'mailto:info@vykopy-sazava.cz?subject=' +
+        encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+      document.getElementById('form-sent').style.display = 'block';
+    });
+  })();
+</script>
+
 </body>
 </html>
