@@ -1,0 +1,21 @@
+# Prostředí a tajné hodnoty
+.env
+.env.*
+*.local
+*.pem
+*.key
+
+# Závislosti
+node_modules/
+
+# Sestavení
+dist/
+build/
+.cache/
+
+# Systémové / editor
+.DS_Store
+Thumbs.db
+*.log
+.idea/
+.vscode/
