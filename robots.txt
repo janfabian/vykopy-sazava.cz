@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://vykopy-sazava.cz/sitemap.xml

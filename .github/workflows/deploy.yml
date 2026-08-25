@@ -20,6 +20,7 @@ jobs:
         run: |
           mkdir -p out
           cp index.html out/
+          cp robots.txt sitemap.xml favicon.svg out/
           cp -r assets out/
 
       - name: Deploy to Cloudflare Pages

@@ -12,6 +12,23 @@
 <meta property="og:title" content="Výkopové práce minibagrem — Sázava a okolí | Ionut Gabor" />
 <meta property="og:description" content="Malý bagr, velký dosah. Projedu brankou tam, kde velký bagr nemá šanci." />
 <meta property="og:url" content="https://vykopy-sazava.cz/" />
+<meta property="og:site_name" content="Výkopy Sázava" />
+<meta property="og:image" content="https://vykopy-sazava.cz/assets/img/hero-bagr.jpg" />
+<meta property="og:image:width" content="1171" />
+<meta property="og:image:height" content="795" />
+<meta property="og:image:alt" content="Červený minibagr 1,5 t při výkopu na zahradě" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Výkopové práce minibagrem — Sázava a okolí" />
+<meta name="twitter:description" content="Malý bagr, velký dosah. Projedu brankou tam, kde velký bagr nemá šanci." />
+<meta name="twitter:image" content="https://vykopy-sazava.cz/assets/img/hero-bagr.jpg" />
+<meta name="author" content="Ionut Gabor" />
+<meta name="theme-color" content="#1d2d3d" />
+<meta name="geo.region" content="CZ-ST" />
+<meta name="geo.placename" content="Sázava" />
+<meta name="geo.position" content="49.8756;14.8983" />
+<meta name="ICBM" content="49.8756, 14.8983" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="apple-touch-icon" href="/favicon.svg" />
 <link rel="stylesheet" href="assets/ds.css" />
 <link rel="stylesheet" href="assets/vendor/leaflet/leaflet.css" />
 <script src="assets/vendor/leaflet/leaflet.js" defer></script>
@@ -56,14 +73,41 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "LocalBusiness",
+  "@type": ["LocalBusiness", "HomeAndConstructionBusiness"],
+  "@id": "https://vykopy-sazava.cz/#business",
   "name": "Výkopy Sázava — Ionut Gabor",
-  "description": "Výkopové a zemní práce minibagrem na Sázavsku a v okolí do 40 km.",
+  "description": "Výkopové a zemní práce minibagrem na Sázavsku a v okolí do 40 km. Přípojky, jímky, drenáže, bazény, základy, terénní úpravy.",
+  "url": "https://vykopy-sazava.cz/",
   "telephone": "+420721527026",
   "email": "info@vykopy-sazava.cz",
-  "url": "https://vykopy-sazava.cz/",
-  "areaServed": ["Sázava", "Kácov", "Český Šternberk", "Divišov", "Čerčany", "Chocerady", "Benešov", "Vlašim", "Uhlířské Janovice", "Zruč nad Sázavou", "Kutná Hora", "Kolín", "Týnec nad Sázavou", "Bystřice"],
-  "address": { "@type": "PostalAddress", "addressLocality": "Sázava", "addressRegion": "Středočeský kraj", "addressCountry": "CZ" }
+  "image": "https://vykopy-sazava.cz/assets/img/hero-bagr.jpg",
+  "priceRange": "od 700 Kč/hod",
+  "currenciesAccepted": "CZK",
+  "paymentAccepted": "hotovost, převodem",
+  "founder": { "@type": "Person", "name": "Ionut Gabor" },
+  "address": { "@type": "PostalAddress", "addressLocality": "Sázava", "addressRegion": "Středočeský kraj", "postalCode": "285 06", "addressCountry": "CZ" },
+  "geo": { "@type": "GeoCoordinates", "latitude": 49.8756, "longitude": 14.8983 },
+  "areaServed": [
+    { "@type": "GeoCircle", "geoMidpoint": { "@type": "GeoCoordinates", "latitude": 49.8756, "longitude": 14.8983 }, "geoRadius": 40000 },
+    "Sázava", "Kácov", "Český Šternberk", "Divišov", "Čerčany", "Chocerady", "Ostředek", "Benešov", "Vlašim", "Uhlířské Janovice", "Zruč nad Sázavou", "Trhový Štěpánov", "Kutná Hora", "Kolín", "Zásmuky", "Kostelec nad Černými lesy", "Týnec nad Sázavou", "Bystřice"
+  ],
+  "openingHoursSpecification": [
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"], "opens": "07:00", "closes": "20:00" }
+  ],
+  "makesOffer": [
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Výkopy přípojek (voda, kanalizace, plyn, elektro)" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Výkopy pro jímky a ČOV" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Drenáže kolem domu" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Výkopy pro bazény a jezírka" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Základy staveb a plotů" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Terénní úpravy" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Podklady pod zámkovou dlažbu" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Odvoz a dovoz materiálu" } }
+  ],
+  "review": [
+    { "@type": "Review", "author": { "@type": "Person", "name": "Jan Fabián" }, "reviewBody": "S Ionutem je výborná domluva, na čem jsme se dohodli, to platilo. Díky.", "reviewRating": { "@type": "Rating", "ratingValue": 5, "bestRating": 5 } }
+  ],
+  "aggregateRating": { "@type": "AggregateRating", "ratingValue": 5, "reviewCount": 1, "bestRating": 5 }
 }
 </script>
 </head>
@@ -194,7 +238,7 @@
         </ul>
       </div>
       <figure class="blueprint" style="margin: 0; position: relative">
-        <img src="assets/img/bagr-uzky-pruchod.jpg" alt="Minibagr projíždí úzkým průchodem mezi plotem a domem" style="width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block" />
+        <img src="assets/img/bagr-uzky-pruchod.jpg" alt="Minibagr projíždí úzkým průchodem mezi plotem a domem" loading="lazy" decoding="async" width="1171" height="878" style="width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block" />
         <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
       </figure>
     </div>
@@ -207,11 +251,11 @@
     <p style="font-size: 16px; line-height: 1.5; margin: 0 0 32px; max-width: 56ch; color: var(--color-neutral-700)">Výběr z hotových zakázek. Fotek přibývá s každou další prací.</p>
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: clamp(20px, 3vw, 40px)">
       <figure style="margin: 0">
-        <div class="blueprint" style="position: relative"><img src="assets/img/pripojka-vody.jpg" alt="Výkop rýhy pro přípojku vody minibagrem na zahradě" style="width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block" /><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i></div>
+        <div class="blueprint" style="position: relative"><img src="assets/img/pripojka-vody.jpg" alt="Výkop rýhy pro přípojku vody minibagrem na zahradě" loading="lazy" decoding="async" width="1171" height="878" style="width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block" /><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i></div>
         <figcaption style="display: flex; justify-content: space-between; gap: 12px; margin-top: 12px; font-size: 14px"><span style="font-family: var(--font-heading); font-size: 19px; text-transform: uppercase; letter-spacing: 0.02em">Přípojka vody</span><span style="color: var(--color-neutral-600); letter-spacing: 0.06em; text-transform: uppercase">Sázavsko</span></figcaption>
       </figure>
       <figure style="margin: 0">
-        <div class="blueprint" style="position: relative"><img src="assets/img/vykop-jamy.jpg" alt="Výkop pravoúhlé jámy pro jímku minibagrem" style="width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block" /><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i></div>
+        <div class="blueprint" style="position: relative"><img src="assets/img/vykop-jamy.jpg" alt="Výkop pravoúhlé jámy pro jímku minibagrem" loading="lazy" decoding="async" width="1171" height="878" style="width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block" /><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i></div>
         <figcaption style="display: flex; justify-content: space-between; gap: 12px; margin-top: 12px; font-size: 14px"><span style="font-family: var(--font-heading); font-size: 19px; text-transform: uppercase; letter-spacing: 0.02em">Výkop jámy</span><span style="color: var(--color-neutral-600); letter-spacing: 0.06em; text-transform: uppercase">Sázavsko</span></figcaption>
       </figure>
     </div>
