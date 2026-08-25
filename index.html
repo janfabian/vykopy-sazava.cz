@@ -13,6 +13,8 @@
 <meta property="og:description" content="Malý bagr, velký dosah. Projedu brankou tam, kde velký bagr nemá šanci." />
 <meta property="og:url" content="https://vykopy-sazava.cz/" />
 <link rel="stylesheet" href="assets/ds.css" />
+<link rel="stylesheet" href="assets/vendor/leaflet/leaflet.css" />
+<script src="assets/vendor/leaflet/leaflet.js" defer></script>
 <style>
   body { margin: 0; text-wrap: pretty; background: var(--color-bg); }
   a { color: var(--color-accent-700); text-decoration: none; }
@@ -32,6 +34,14 @@
   /* WhatsApp tlačítko (zelená značka WhatsApp). */
   .btn-whatsapp { background: #25d366; border-color: #1da851; color: #fff; }
   .btn-whatsapp:hover { background: #1eb356; color: #fff; }
+
+  /* Mapa oblasti působení (Leaflet). */
+  #mapa { width: 100%; height: clamp(300px, 62vw, 440px); background: var(--color-accent-100); }
+  .mapa-label { background: var(--color-accent-900); color: #fff; border: 0; border-radius: 3px;
+    font-family: var(--font-heading); font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase;
+    padding: 2px 8px; box-shadow: var(--shadow-sm); }
+  .mapa-label::before { display: none; }
+  .leaflet-container { font-family: var(--font-body); }
 
   /* Plovoucí lišta (Volat + WhatsApp) jen na úzkých displejích (mobil). */
   .sticky-bar { display: none; }
@@ -96,7 +106,7 @@
         </ul>
       </div>
       <figure class="blueprint" style="margin: 0; position: relative; min-height: 260px">
-        <img src="assets/img/hero-bagr.jpg" alt="Červený minibagr 1,5 t při výkopu na zahradě u domu" style="width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block" />
+        <video id="hero-video" poster="assets/img/hero-bagr.jpg" muted loop playsinline preload="none" aria-label="Minibagr Ionuta při výkopu na zahradě" style="width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; background: var(--color-accent-900)"></video>
         <i class="corner tl" style="color: rgba(255,255,255,.6)"></i><i class="corner tr" style="color: rgba(255,255,255,.6)"></i><i class="corner bl" style="color: rgba(255,255,255,.6)"></i><i class="corner br" style="color: rgba(255,255,255,.6)"></i>
       </figure>
     </div>
@@ -259,18 +269,10 @@
           <li class="tag tag-outline">Sázava</li><li class="tag tag-outline">Kácov</li><li class="tag tag-outline">Český Šternberk</li><li class="tag tag-outline">Divišov</li><li class="tag tag-outline">Čerčany</li><li class="tag tag-outline">Chocerady</li><li class="tag tag-outline">Ostředek</li><li class="tag tag-outline">Benešov</li><li class="tag tag-outline">Vlašim</li><li class="tag tag-outline">Uhlířské Janovice</li><li class="tag tag-outline">Zruč nad Sázavou</li><li class="tag tag-outline">Trhový Štěpánov</li><li class="tag tag-outline">Kutná Hora</li><li class="tag tag-outline">Kolín</li><li class="tag tag-outline">Zásmuky</li><li class="tag tag-outline">Kostelec nad Černými lesy</li><li class="tag tag-outline">Týnec nad Sázavou</li><li class="tag tag-outline">Bystřice</li>
         </ul>
       </div>
-      <div style="position: relative; width: 100%; max-width: 380px; aspect-ratio: 1 / 1; justify-self: center">
-        <div style="position: absolute; inset: 0; border: 1px dashed var(--color-accent-500); border-radius: 50%"></div>
-        <div style="position: absolute; inset: 22%; border: 1px dashed var(--color-accent-400); border-radius: 50%"></div>
-        <div style="position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; background: var(--color-divider)"></div>
-        <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: var(--color-divider)"></div>
-        <div style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); text-align: center">
-          <span style="display: block; width: 12px; height: 12px; background: var(--color-accent); margin: 0 auto 8px"></span>
-          <strong style="font-family: var(--font-heading); font-size: 24px; text-transform: uppercase; letter-spacing: 0.04em">Sázava</strong>
-        </div>
-        <span style="position: absolute; left: 50%; bottom: 6px; transform: translateX(-50%); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-accent-700); background: var(--color-bg); padding: 0 8px">Dojezd 40 km</span>
-        <span style="position: absolute; left: 50%; top: 22%; transform: translate(-50%, -50%); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-accent-700); background: var(--color-bg); padding: 0 6px">15 km</span>
-      </div>
+      <figure class="blueprint" style="margin: 0; position: relative; width: 100%">
+        <div id="mapa" role="img" aria-label="Mapa oblasti působení: okruh 40 km od Sázavy"></div>
+        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      </figure>
     </div>
   </section>
 
@@ -372,6 +374,54 @@
       document.getElementById('form-sent').style.display = 'block';
     });
   })();
+
+  // Hero video: zdroj se přidá a přehraje až po načtení stránky a když je video vidět
+  // (preload="none" + lazy = žádný zbytečný přenos dat). Respektuje "prefers-reduced-motion".
+  (function () {
+    var v = document.getElementById('hero-video');
+    if (!v) return;
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var started = false;
+    function start() {
+      if (started) return; started = true;
+      var s = document.createElement('source');
+      s.src = 'assets/video/kope.mp4'; s.type = 'video/mp4';
+      v.appendChild(s); v.load();
+      var p = v.play(); if (p && p.catch) p.catch(function () {});
+    }
+    window.addEventListener('load', function () {
+      if ('IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function (es) {
+          es.forEach(function (e) { if (e.isIntersecting) { start(); io.disconnect(); } });
+        }, { rootMargin: '300px' });
+        io.observe(v);
+      } else { start(); }
+    });
+  })();
+
+  // Mapa oblasti působení — Leaflet + OpenStreetMap, okruh 40 km kolem Sázavy.
+  window.addEventListener('load', function () {
+    if (typeof L === 'undefined') return;
+    var el = document.getElementById('mapa'); if (!el) return;
+    var sazava = [49.8756, 14.8983];
+    var map = L.map(el, {
+      scrollWheelZoom: false,
+      dragging: !L.Browser.mobile,
+      zoomControl: true,
+      attributionControl: true
+    }).setView(sazava, 9);
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 18,
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map);
+    var circle = L.circle(sazava, {
+      radius: 40000, color: '#416180', weight: 2, fillColor: '#5980a6', fillOpacity: 0.12
+    }).addTo(map);
+    L.circleMarker(sazava, {
+      radius: 6, color: '#ffffff', weight: 2, fillColor: '#1d2d3d', fillOpacity: 1
+    }).addTo(map).bindTooltip('Sázava', { permanent: true, direction: 'top', className: 'mapa-label', offset: [0, -6] });
+    map.fitBounds(circle.getBounds(), { padding: [12, 12] });
+  });
 </script>
 
 </body>
