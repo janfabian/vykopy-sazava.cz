@@ -1,6 +1,6 @@
-name: Deploy to GitHub Pages
+name: Deploy to Cloudflare Pages
 
-# Každý push do main nasadí web na GitHub Pages.
+# Každý push do main nasadí web na Cloudflare Pages (projekt vykopy-sazava).
 on:
   push:
     branches: [main]
@@ -8,29 +8,23 @@ on:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
-
-# Nechat doběhnout jeden deploy; nové pushe frontu nahradí.
-concurrency:
-  group: pages
-  cancel-in-progress: true
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Configure Pages
-        uses: actions/configure-pages@v5
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+
+      - name: Build publish dir
+        run: |
+          mkdir -p out
+          cp index.html out/
+          cp -r assets out/
+
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
         with:
-          path: .
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy out --project-name=vykopy-sazava --branch=main
