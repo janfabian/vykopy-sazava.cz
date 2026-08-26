@@ -35,7 +35,7 @@
 <style>
   body { margin: 0; text-wrap: pretty; background: var(--color-bg); }
   a { color: var(--color-accent-700); text-decoration: none; }
-  a:hover { color: var(--color-accent-900); }
+  a:not(.btn):hover { color: var(--color-accent-900); }
 
   /* Placeholdery na fotky — nahraď <img>, až budou reálné snímky (viz FOTKY.md). */
   .img-slot {
@@ -286,7 +286,7 @@
     <span style="display: block; font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent-700); margin-bottom: 12px">03 · Realizace</span>
     <hr style="height: 1px; border: 0; background: var(--color-divider); margin: 0 0 24px" />
     <h2 style="font-family: var(--font-heading); font-weight: 600; font-size: clamp(30px, 5vw, 46px); line-height: 1.05; text-transform: uppercase; margin: 0 0 10px; letter-spacing: 0.01em">Ukázky práce</h2>
-    <p style="font-size: 16px; line-height: 1.5; margin: 0 0 32px; max-width: 56ch; color: var(--color-neutral-700)">Výběr z hotových zakázek. Fotek přibývá s každou další prací.</p>
+    <p style="font-size: 16px; line-height: 1.5; margin: 0 0 32px; max-width: 56ch; color: var(--color-neutral-700)">Výběr z hotových zakázek.</p>
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: clamp(20px, 3vw, 40px)">
       <figure style="margin: 0">
         <div class="blueprint" style="position: relative"><img src="assets/img/pripojka-vody.jpg" alt="Výkop rýhy pro přípojku vody minibagrem na zahradě" loading="lazy" decoding="async" width="1168" height="784" style="width: 100%; height: auto; display: block" /><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i></div>
@@ -326,12 +326,12 @@
   <section id="o-mne" style="max-width: 1160px; margin: 0 auto; padding: clamp(40px, 7vw, 88px) clamp(16px, 4vw, 48px) 0">
     <span style="display: block; font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent-700); margin-bottom: 12px">05 · Kdo pro vás kope</span>
     <hr style="height: 1px; border: 0; background: var(--color-divider); margin: 0 0 24px" />
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: clamp(24px, 4vw, 56px); align-items: center">
-      <figure class="blueprint" style="margin: 0; position: relative; max-width: 300px">
+    <div style="display: flex; flex-wrap: wrap; gap: clamp(24px, 4vw, 48px); align-items: center">
+      <figure class="blueprint" style="margin: 0; position: relative; flex: 0 1 300px; width: 300px; max-width: 100%">
         <img src="assets/img/ionut.jpg" alt="Ionut Gabor ve svém 1,5t minibagru při výkopu" loading="lazy" decoding="async" width="900" height="1200" style="width: 100%; height: auto; display: block" />
         <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
       </figure>
-      <div>
+      <div style="flex: 1; min-width: 280px">
         <h2 style="font-family: var(--font-heading); font-weight: 600; font-size: clamp(30px, 5vw, 46px); line-height: 1.05; text-transform: uppercase; margin: 0 0 18px; letter-spacing: 0.01em">Ionut Gabor</h2>
         <p style="font-size: 17px; line-height: 1.6; margin: 0 0 16px; max-width: 52ch">Bydlím na Sázavsku a pracuji sám na sebe. Telefon zvedám já a k vám přijedu taky já.</p>
         <p style="font-size: 17px; line-height: 1.6; margin: 0 0 16px; max-width: 52ch; color: var(--color-neutral-700)">Začínám, takže si na každé zakázce dávám záležet. Přijedu v domluvený čas, cenu během práce neměním a po sobě uklidím. Pokud něco nejde nebo se nevyplatí, řeknu to rovnou.</p>
@@ -388,7 +388,6 @@
       </div>
       <form id="poptavka-form" style="display: grid; gap: 14px; align-content: start">
         <div class="field"><label for="f-jmeno" style="color: var(--color-accent-200)">Jméno</label><input class="input" id="f-jmeno" name="jmeno" type="text" placeholder="Jan Novák" style="min-height: 48px; font-size: 16px" /></div>
-        <div class="field"><label for="f-tel" style="color: var(--color-accent-200)">Telefon</label><input class="input" id="f-tel" name="telefon" type="tel" placeholder="+420 …" style="min-height: 48px; font-size: 16px" /></div>
         <div class="field"><label for="f-obec" style="color: var(--color-accent-200)">Obec</label><input class="input" id="f-obec" name="obec" type="text" placeholder="Kácov" style="min-height: 48px; font-size: 16px" /></div>
         <div class="field"><label for="f-co" style="color: var(--color-accent-200)">Co potřebuji</label><textarea class="input" id="f-co" name="popis" rows="4" placeholder="Např. přípojka vody od hranice pozemku k domu, asi 18 m, branka 1,1 m." style="font-size: 16px; resize: vertical"></textarea></div>
         <button class="btn btn-whatsapp" type="submit" style="min-height: 56px; font-size: 18px; display: inline-flex; align-items: center; justify-content: center; gap: 10px">
@@ -432,12 +431,10 @@
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       var jmeno = form.jmeno.value.trim();
-      var tel = form.telefon.value.trim();
       var obec = form.obec.value.trim();
       var popis = form.popis.value.trim();
       var lines = ['Poptávka z webu vykopy-sazava.cz', ''];
       if (jmeno) lines.push('Jméno: ' + jmeno);
-      if (tel) lines.push('Telefon: ' + tel);
       if (obec) lines.push('Obec: ' + obec);
       if (popis) { lines.push(''); lines.push(popis); }
       var text = lines.join('\n');
