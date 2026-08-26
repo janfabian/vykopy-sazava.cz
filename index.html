@@ -52,6 +52,10 @@
   .btn-whatsapp { background: #25d366; border-color: #1da851; color: #fff; }
   .btn-whatsapp:hover { background: #1eb356; color: #fff; }
 
+  /* Nav tlačítka: přebít .nav a:hover z design systému (jinak text i ikona při hoveru zblednou). */
+  .nav .btn-primary:hover { color: var(--color-bg); }
+  .nav .btn-whatsapp:hover { color: #fff; }
+
   /* Mapa oblasti působení (Leaflet). */
   #mapa { width: 100%; height: clamp(300px, 62vw, 440px); background: var(--color-accent-100); }
   .mapa-label { background: var(--color-accent-900); color: #fff; border: 0; border-radius: 3px;
